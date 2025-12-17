@@ -131,10 +131,6 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-CORS_ORIGIN_WHITELIST = (
-    '0.0.0.0:8282',
-    'localhost:8282',
-)
 
 CORS_ORIGIN_WHITELIST = tuple(
     origin.strip()
