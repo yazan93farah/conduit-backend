@@ -49,9 +49,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -59,9 +59,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
-CORS_ORIGIN_ALLOW_ALL = True
-
 
 ROOT_URLCONF = 'conduit.urls'
 
@@ -134,13 +131,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-
-CORS_ORIGIN_WHITELIST = tuple(
-    origin.strip()
-    for origin in os.environ.get("CORS_ORIGIN_WHITELIST", "").split(",")
-    if origin.strip()
+CORS_ORIGIN_WHITELIST = (
+    '0.0.0.0:8282',
+    'localhost:8282',
 )
-
 
 # Tell Django about the custom `User` model we created. The string
 # `authentication.User` tells Django we are referring to the `User` model in
