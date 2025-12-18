@@ -1,10 +1,13 @@
 FROM python:3.5.10-slim
 
 WORKDIR /app
-RUN apt-get update && apt-get install -y \
+RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
+ && sed -i 's|security.debian.org|archive.debian.org|g' /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
     gcc \
     libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/*
 COPY . .
 RUN pip install -r requirements.txt
 ENV WORKERS=2 
