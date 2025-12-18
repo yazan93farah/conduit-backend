@@ -7,10 +7,10 @@ python manage.py createsuperuser --noinput \
   --username "$DJANGO_SUPERUSER_USERNAME" \
   --email "$DJANGO_SUPERUSER_EMAIL" || true
 
-echo "Starting Gunicorn with $WORKERS workers on port $DJANGO_CONTAINER_PORT"
+echo "Starting Gunicorn with $WORKERS workers on port 5000"
 
 
 exec gunicorn \
   -w "$WORKERS" \
-  -b "0.0.0.0:$DJANGO_CONTAINER_PORT" \
+  -b "0.0.0.0:5000" \
   conduit.wsgi:application
