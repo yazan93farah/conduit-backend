@@ -10,7 +10,7 @@ RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
  && rm -rf /var/lib/apt/lists/*
 COPY . .
 RUN pip install -r requirements.txt
-ENV WORKERS=2 
+ENV BACKEND_WORKERS=2 
 EXPOSE 5000
 RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]

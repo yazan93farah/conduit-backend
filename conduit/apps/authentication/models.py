@@ -45,7 +45,7 @@ class UserManager(BaseUserManager):
         import os
         print('Reading superuser password from env')
         SUPER_USER_PASSWORD = os.environ.get(
-            'DJANGO_SUPERUSER_PASSWORD', '')
+            'BACKEND_DJANGO_SUPERUSER_PASSWORD', '')
         if len(SUPER_USER_PASSWORD) >= 4:
             password = SUPER_USER_PASSWORD
         else:
