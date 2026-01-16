@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('BACKEND_DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-BACKEND_ALLOWED_HOSTS = os.environ["BACKEND_ALLOWED_HOSTS"].split(",")
+ALLOWED_HOSTS = os.environ["BACKEND_ALLOWED_HOSTS"].split(",")
 
 
 # Application definition
